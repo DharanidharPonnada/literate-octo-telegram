@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1",
+    "title": "Review daily metrics",
+    "due_date": null,
+    "status": "todo",
+    "notes": "Check trading volume, errors"
+  },
+  {
+    "id": "2",
+    "title": "Rotate hot wallet key",
+    "due_date": "2026-07-02",
+    "status": "todo",
+    "notes": "Move small portion after rotation"
+  },
+  {
+    "id": "3",
+    "title": "Respond to compliance ticket #42",
+    "due_date": "2026-06-30",
+    "status": "done",
+    "notes": "Completed by legal"
+  }
+]
