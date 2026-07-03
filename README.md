@@ -1,28 +1,27 @@
 # Multi-Agent Content Pipeline (Gemini)
 
 A small Python project that chains three role-specific LLM "agents" to draft and
-then self-review short content, built on the **Google GenAI SDK** with **Gemini**
-models. It is a personal learning project exploring multi-agent orchestration and
-API token / cost tracking.
+then self-review short content, built on the **Google GenAI SDK** with the
+**Gemini 2.5 Flash** model. It is a personal learning project exploring
+multi-agent orchestration and API token / cost tracking.
 
 ## How it works
 
 The pipeline runs three agents in sequence:
 
-1. **Researcher agent** gathers factual points, run at a low temperature (~0.0) for accuracy.
-2. **Editor agent** turns the research into engaging copy, run at a higher temperature (~0.7).
-3. **Critic agent** reviews the draft and scores it for quality.
+1. **Researcher agent** gathers factual points, run at a low temperature (0.0) for accuracy.
+2. **Editor agent** turns the research into an engaging newsletter, run at a higher temperature (0.7).
+3. **Critic agent** reviews the draft and gives it a 1-5 star rating with feedback (temperature 0.2).
 
-Token usage is read from the API's `usage_metadata` so you can observe context
-caching and keep an eye on API cost.
+The token-tracking version also reads the API's `usage_metadata` after the run to
+report total input tokens and any tokens saved through Gemini's implicit context caching.
 
 ## Project structure
 
 | File | Purpose |
 |------|---------|
 | `multi_agent.py` | Core pipeline with the three agents |
-| `multi_agent_token.py` | Variant that tracks token / usage_metadata |
-| `tasks.sample.json` | Example input tasks |
+| `multi_agent_token.py` | Same pipeline, plus token / context-caching metrics |
 | `requirements.txt` | Python dependencies |
 
 ## Setup
@@ -34,7 +33,7 @@ caching and keep an eye on API cost.
    pip install -r requirements.txt
    ```
 
-2. Set your API key as an environment variable (never hard-code it):
+2. Set your Gemini API key as an environment variable (never hard-code it):
    ```bash
    # macOS / Linux
    export GEMINI_API_KEY="your_key_here"
@@ -43,24 +42,23 @@ caching and keep an eye on API cost.
    # Windows
    setx GEMINI_API_KEY "your_key_here"
    ```
-   Use whichever variable name your code actually reads (for example `GOOGLE_API_KEY`).
-
-3. Create your task file from the sample:
-   ```bash
-   cp tasks.sample.json tasks.json
-   ```
 
 ## Run
 
 ```bash
 python multi_agent.py
 ```
-_If your entry script has a different name (for example `run_agent.py`), use that instead._
+The script will prompt you to enter a topic, then run the three agents in sequence.
+
+To see token usage and context-caching metrics, run the tracking version instead:
+```bash
+python multi_agent_token.py
+```
 
 ## Notes
 
-- API keys are read from environment variables, so no credentials are committed to the repo.
-- Built with the Google GenAI SDK (`google-genai`) and Gemini models.
+- The API key is read from the `GEMINI_API_KEY` environment variable, so no credentials are committed to the repo.
+- Built with the Google GenAI SDK (`google-genai`) and the Gemini 2.5 Flash model.
 
 ## Status
 
