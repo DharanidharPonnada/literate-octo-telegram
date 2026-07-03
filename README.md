@@ -1,4 +1,3 @@
-# literate-octo-telegram
 # Multi-Agent Content Pipeline (Gemini)
 
 A small Python project that chains three role-specific LLM "agents" to draft and
