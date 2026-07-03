@@ -25,14 +25,12 @@ caching and keep an eye on API cost.
 | `tasks.sample.json` | Example input tasks |
 | `requirements.txt` | Python dependencies |
 
-_(Adjust this table to match your final file names.)_
-
 ## Setup
 
 1. Clone and install dependencies:
    ```bash
-   git clone https://github.com/DharanidharPonnada/<repo-name>.git
-   cd <repo-name>
+   git clone https://github.com/DharanidharPonnada/multi-agent-gemini-pipeline.git
+   cd multi-agent-gemini-pipeline
    pip install -r requirements.txt
    ```
 
@@ -57,7 +55,7 @@ _(Adjust this table to match your final file names.)_
 ```bash
 python multi_agent.py
 ```
-_(Use your actual entry script, e.g. `run_agent.py`, if different.)_
+_If your entry script has a different name (for example `run_agent.py`), use that instead._
 
 ## Notes
 
